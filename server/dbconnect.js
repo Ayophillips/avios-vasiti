@@ -50,4 +50,18 @@ connection.connect(function (err) {
   });
 });
 
+connection.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected!");
+  var sql =
+    "CREATE TABLE ProductCart (id INT AUTO_INCREMENT PRIMARY KEY, product_id BIGINT, date_added DATETIME)";
+  connection.query(sql, function (err, result) {
+    if (err) {
+      console.log("ProductCart table exist");
+    } else {
+      console.log("PorductCart Table created");
+    }
+  });
+});
+
 module.exports = connection;
